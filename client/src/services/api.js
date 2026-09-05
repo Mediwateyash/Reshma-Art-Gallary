@@ -8,10 +8,7 @@ const getApiBaseUrl = () => {
 
   // If running inside Capacitor native Android/iOS app without explicit env var
   if (Capacitor.isNativePlatform()) {
-    // Android emulator loopback or default development backend
-    return Capacitor.getPlatform() === 'android'
-      ? 'http://10.0.2.2:5000/api'
-      : 'http://localhost:5000/api';
+    return 'https://reshma-art-gallary.onrender.com/api';
   }
 
   // Standard web browser development/production proxy

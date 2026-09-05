@@ -14,10 +14,16 @@ app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (e.g. mobile apps, curl, server-to-server) or matching origin
-      if (!origin || origin === allowedOrigin || origin.startsWith('http://localhost:')) {
+      if (
+        !origin ||
+        origin === allowedOrigin ||
+        origin.startsWith('http://localhost:') ||
+        origin.startsWith('https://localhost') ||
+        origin.startsWith('capacitor://')
+      ) {
         callback(null, true);
       } else {
-        callback(null, true); // Permissive in development
+        callback(null, true); // Permissive API access
       }
     },
     credentials: true,
@@ -31,6 +37,22 @@ app.use('/api/auth', authRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/history', historyRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+
+// Root Welcome Route
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Reshma's Art Gallery REST API is running",
+    healthCheck: '/api/health',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      inventory: '/api/inventory',
+      history: '/api/history',
+      dashboard: '/api/dashboard',
+    },
+  });
+});
 
 // Health check
 app.get('/api/health', (req, res) => {
