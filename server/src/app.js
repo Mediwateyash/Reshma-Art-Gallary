@@ -38,21 +38,24 @@ app.use('/api/inventory', inventoryRoutes);
 app.use('/api/history', historyRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
-// Root Welcome Route
-app.get('/', (req, res) => {
+// Root & /api Overview Route
+const apiOverviewHandler = (req, res) => {
   res.status(200).json({
     success: true,
     message: "Reshma's Art Gallery REST API is running",
     healthCheck: '/api/health',
     endpoints: {
       health: '/api/health',
-      auth: '/api/auth',
+      auth: '/api/auth/login',
       inventory: '/api/inventory',
       history: '/api/history',
       dashboard: '/api/dashboard',
     },
   });
-});
+};
+
+app.get('/', apiOverviewHandler);
+app.get('/api', apiOverviewHandler);
 
 // Health check
 app.get('/api/health', (req, res) => {
