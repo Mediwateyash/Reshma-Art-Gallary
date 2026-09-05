@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Reshma\'s Art Gallery</string>
+    <string name="title_activity_main">Reshma\'s Art Gallery</string>
+    <string name="package_name">com.reshmagallery.inventory</string>
+    <string name="custom_url_scheme">com.reshmagallery.inventory</string>
+</resources>

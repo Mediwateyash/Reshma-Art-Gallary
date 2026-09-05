@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: reshmas-art-gallery-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: "7d"
+      - key: ADMIN_NAME
+        value: Reshma Diwate
+      - key: ADMIN_EMAIL
+        value: admin@reshmagallery.com
+      - key: ADMIN_PASSWORD
+        sync: false
