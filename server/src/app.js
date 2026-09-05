@@ -32,11 +32,18 @@ app.use(
 
 app.use(express.json());
 
-// API Routes
+// API Routes (Mounted under /api and root for robust compatibility)
 app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
+
 app.use('/api/inventory', inventoryRoutes);
+app.use('/inventory', inventoryRoutes);
+
 app.use('/api/history', historyRoutes);
+app.use('/history', historyRoutes);
+
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 // Root & /api Overview Route
 const apiOverviewHandler = (req, res) => {
