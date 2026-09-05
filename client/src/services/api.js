@@ -1,18 +1,17 @@
 import { Capacitor } from '@capacitor/core';
 
-// Determine the active API base URL
 const getApiBaseUrl = () => {
   if (import.meta.env.VITE_API_BASE_URL) {
     return import.meta.env.VITE_API_BASE_URL;
   }
 
-  // If running inside Capacitor native Android/iOS app without explicit env var
-  if (Capacitor.isNativePlatform()) {
-    return 'https://reshma-art-gallary.onrender.com/api';
+  // In local development browser, connect to local Express server
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return 'http://localhost:5000/api';
   }
 
-  // Standard web browser development/production proxy
-  return '/api';
+  // Default to live production Render backend for Vercel, PWA, and mobile apps
+  return 'https://reshma-art-gallary.onrender.com/api';
 };
 
 const API_BASE = getApiBaseUrl();
