@@ -18,8 +18,7 @@ app.use(
         !origin ||
         origin === allowedOrigin ||
         origin.startsWith('http://localhost:') ||
-        origin.startsWith('https://localhost') ||
-        origin.startsWith('capacitor://')
+        origin.startsWith('https://localhost')
       ) {
         callback(null, true);
       } else {

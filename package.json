@@ -2,8 +2,9 @@
   "name": "reshmas-art-gallery",
   "version": "1.0.0",
   "private": true,
-  "description": "Production inventory management application for Reshma's Art Gallery",
+  "description": "Production inventory management web application for Reshma's Art Gallery",
   "scripts": {
+    "dev": "npm run dev:client",
     "dev:server": "npm run dev --prefix server",
     "dev:client": "npm run dev --prefix client",
     "install:server": "npm install --prefix server",
@@ -12,18 +13,12 @@
     "postinstall": "npm install --prefix client",
     "build:client": "npm run build --prefix client",
     "build:server": "npm run build --prefix server",
-    "build": "npm install --prefix client && npm run build --prefix client",
-    "cap:sync": "npm run cap:sync --prefix client",
-    "cap:open": "npm run cap:open:android --prefix client",
-    "build:android": "npm run build:client && npm run cap:sync --prefix client",
-    "build:apk": "npm run build:android && cd client/android && powershell -Command \"$env:ANDROID_PREFS_ROOT=$null; .\\gradlew.bat assembleDebug\""
+    "build": "npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
     "inventory-management",
     "art-gallery",
     "pwa",
-    "capacitor",
-    "android",
     "react",
     "express",
     "mongodb"
